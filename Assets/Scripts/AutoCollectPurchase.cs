@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class AutoCollectPurchase : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private GameController gameController;
+    private int price = 5000;
+
+    private void Start()
     {
-        
+        gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        
+        if (gameController.AutoCollectStatus) return;
+        gameController.AutoCollectStatus = true;
     }
 }

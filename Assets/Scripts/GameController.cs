@@ -66,6 +66,7 @@ public class GameController : MonoBehaviour
     public List<GameObject> GetTiles { get => tiles; }
     public GameObject TileMap { get => tileMap; }
     public GameObject Character { get => character; }
+    public bool AutoCollectStatus { get => autoCollect; set => autoCollect = value; }
     public CharacterScript CharacterScr { get => character.GetComponent<CharacterScript>(); }
     private void Start()
     {
