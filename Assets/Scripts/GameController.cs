@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
     public  int GetBalance
     {
         get { return balance; }
-        set 
+        private set 
         {
             if(value > 0) 
             {
@@ -74,7 +74,19 @@ public class GameController : MonoBehaviour
         tileMap = GameObject.FindWithTag("TileMap");
         DrawBalance();
     }
+    private bool IsPurchasePossible(int price) =>balance >= price;
 
+    public bool TryPurchase(int price)
+    {
+        if (!IsPurchasePossible(price))
+        {
+            Debug.Log("Error! Not enough money");
+            return false;
+        }
+
+        GetBalance -= price;
+        return true;
+    }
     private void DrawBalance() => balanceUI.text = $"Balance: {balance}$";
     void Update()
     {

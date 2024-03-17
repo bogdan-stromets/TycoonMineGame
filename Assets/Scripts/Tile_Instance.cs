@@ -34,17 +34,9 @@ public class Tile_Instance : MonoBehaviour
     {
         if (!IsTileLock()) return;
 
-        if (IsEnoughMoney(price))
-        {
-            gameController.GetBalance -= price;
-            //processUnlock = true;
+        if (gameController.TryPurchase(price))
             UnlockTile();
-        }
-    }
-
-    private bool IsEnoughMoney(int price)
-    {
-        return gameController.GetBalance >= price;
+        
     }
 
     private IEnumerator TileSpawnAnimation(int step, int duration)

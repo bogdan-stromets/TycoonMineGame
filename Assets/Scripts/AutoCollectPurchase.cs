@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AutoCollectPurchase : MonoBehaviour
@@ -15,6 +16,11 @@ public class AutoCollectPurchase : MonoBehaviour
     private void OnMouseDown()
     {
         if (gameController.AutoCollectStatus) return;
-        gameController.AutoCollectStatus = true;
+
+        if (gameController.TryPurchase(price)) 
+        {
+            gameController.AutoCollectStatus = true;
+            GetComponentInChildren<TextMeshPro>().text = "Done";
+        }
     }
 }
