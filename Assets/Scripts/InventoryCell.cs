@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class InventoryCell : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Vector3 defaultPos { get; private set; }
+    public bool InDefaultPlace { get; set; }
+    private bool isUnlocked = true;
+    public bool Unlocked { get => isUnlocked; set => isUnlocked = value; }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        defaultPos = transform.position;
     }
 }

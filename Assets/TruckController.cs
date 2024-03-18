@@ -7,19 +7,24 @@ public class TruckController : MonoBehaviour
 {
     [SerializeField] private GameObject target;
     [SerializeField] private int speed = 3;
+    [SerializeField] private TruckState state = TruckState.Full; // temp
     private Vector3 defaultPosition;
     private bool canMove, isBackMove;
-    private TruckState state = TruckState.Idle; //{get; private set;}
+    public TruckState Getstate {get => state; private set => state = value;}
+    private InventoryManager inventoryManager;
     private void Start()
     {
         defaultPosition = transform.position;
-        state = TruckState.Full;
+        
+        inventoryManager = GetComponentInChildren<InventoryManager>();
     }
     private void OnMouseDown()
     {
         if (state == TruckState.Move) return;
         canMove = true;
         state = TruckState.Move;
+        if(inventoryManager.state == InventoryState.Open)
+            inventoryManager.OnMouseDown();
     }
 
     private void Update()

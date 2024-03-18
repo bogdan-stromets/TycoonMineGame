@@ -36,12 +36,19 @@ public enum CharacterState
     Move,
     Busy
 }
-enum TruckState
+public enum TruckState
 {
     Idle,
     Move,
     Full,
     Empty
+}
+public enum InventoryState
+{
+    Open,
+    Close,
+    Closing,
+    Opening
 }
 public class GameController : MonoBehaviour
 {
@@ -49,8 +56,12 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshPro balanceUI;
     [SerializeField] private GameObject character;
     [SerializeField] private List<GameObject> tiles;
+    [SerializeField] private InventoryManager invManager;
     [SerializeField] private bool autoCollect;
+    [SerializeField] private int inventorylvl = 1;
+    [SerializeField] private GameObject truck;
     private GameObject tileMap;
+   
     public  int GetBalance
     {
         get { return balance; }
@@ -63,11 +74,15 @@ public class GameController : MonoBehaviour
             }
         }
     }
+    public int MaxInventoryLvl { get => 5; }
+    public GameObject GetTruck { get => truck; }
+    public InventoryManager InventoryManager { get =>invManager; }
     public List<GameObject> GetTiles { get => tiles; }
     public GameObject TileMap { get => tileMap; }
     public GameObject Character { get => character; }
     public bool AutoCollectStatus { get => autoCollect; set => autoCollect = value; }
     public CharacterScript CharacterScr { get => character.GetComponent<CharacterScript>(); }
+    public int InventoryLevel { get => inventorylvl; set => inventorylvl = value; }
     private void Start()
     {
         // зчитування балансу і інфу про відкриті плитки з файлу
@@ -91,6 +106,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         AutoCollect();
+
     }
     public void AutoCollect()
     {
@@ -109,6 +125,8 @@ public class GameController : MonoBehaviour
             }
         }
     }
+
+
 }
 
 public static class ExtMethods<T>

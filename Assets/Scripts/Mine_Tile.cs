@@ -67,7 +67,8 @@ public class Mine_Tile : Tile_Instance
     public void PickupResource()
     {
         if (gameController.CharacterScr.characterState == CharacterState.Move ||
-            gameController.CharacterScr.characterState == CharacterState.Busy) return;
+            gameController.CharacterScr.characterState == CharacterState.Busy ||
+            gameController.GetTruck.GetComponentInChildren<TruckController>().Getstate == TruckState.Full) return;
 
         PathCreator pathToTile = GetComponentInChildren<PathCreator>();
         //pathToTile.pathReversed = false;
