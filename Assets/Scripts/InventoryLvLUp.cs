@@ -11,6 +11,13 @@ public class InventoryLvLUp : MonoBehaviour
     {
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
     }
+    private void Start()
+    {
+        if (gameController.InventoryLevel == gameController.MaxInventoryLvl)
+            GetComponentInChildren<TextMeshPro>().text = $"Max \n Lvl";
+        else
+            GetComponentInChildren<TextMeshPro>().text = $"↑v↑ {gameController.InventoryLevel}";
+    }
     private void OnMouseDown()
     {
         if (gameController.InventoryLevel == gameController.MaxInventoryLvl) return;

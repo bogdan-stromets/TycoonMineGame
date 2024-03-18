@@ -45,7 +45,7 @@ namespace Assets.Scripts
                 {
                     if (targetValue == 0)
                     {
-                        parent_tile.tileState = TileState.ResourceReady;
+                        parent_tile.tileState = TileState.ResourceSpawning;
                     }
                     yield break;
                 }

@@ -17,6 +17,7 @@ public class InventoryManager : MonoBehaviour
     private float speed = 3f;
 
     public List<InventoryCell> GetActiveCells { get => activeCells; }
+    public List<InventoryCell> GetAllCells { get => inventoryCells; }
     public Material GetMaterial(ResourceType rt)
     {
         if (materials == null)

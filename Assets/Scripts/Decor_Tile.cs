@@ -10,24 +10,4 @@ public class Decor_Tile : Tile_Instance
     {
         unlockPrice = price;
     }
-/*    private void UnlockMineTile()
-    {
-        if (!IsTileLock()) return;
-
-        if (TryToUnlockTile())
-        {
-            gameController.GetBalance -= price;
-            UnlockTile();
-        }
-    }
-
-    private bool TryToUnlockTile()
-    {
-        return gameController.GetBalance >= price;
-    }
-    private void OnMouseDown()
-    {
-        if (!IsTileLock()) return;
-        UnlockMineTile();
-    }*/
 }

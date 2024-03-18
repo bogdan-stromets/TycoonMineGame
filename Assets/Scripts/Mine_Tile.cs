@@ -27,10 +27,21 @@ public class Mine_Tile : Tile_Instance
     {
         unlockPrice = (int)price;
     }
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         SpawnPickaxe();
         progressBar = GetComponentInChildren<ProgressBarActions>();
+        switch (tileState)
+        {
+            case TileState.ProcessMine:
+                tileState = TileState.ReadyToMine;
+            break;
+            case TileState.ResourceReady:
+                SpawnResource();
+            break;
+        }
+
     }
     private void SpawnPickaxe()
     {
@@ -62,6 +73,7 @@ public class Mine_Tile : Tile_Instance
 
     public void PickupResource()
     {
+        if (tileState == TileState.ResourceSpawning) return;
         gameController.InventoryManager.CheckFullTruck();
         if (gameController.CharacterScr.characterState == CharacterState.Move ||
             gameController.CharacterScr.characterState == CharacterState.Busy ||
@@ -86,15 +98,13 @@ public class Mine_Tile : Tile_Instance
     }
     private void SpawnResource()
     {
+        tileState = TileState.ResourceSpawning;
         pickaxeBehaviour.HidePickaxe();
         GameObject resource = Instantiate(resource_prefab,transform.position + Vector3.down * 2,Quaternion.identity);
         resource.transform.localScale = Vector3.one * 3;
         resource.transform.SetParent(transform, true);
         ResourceActions resourceActions = resource.AddComponent<ResourceActions>();
         resourceActions.GameController = gameController;
-
-        //tileState = TileState.ResourceReady;
-        // закінчив тут
     }
     IEnumerator TimerMine(int miningTime)
     {
@@ -113,8 +123,8 @@ public class Mine_Tile : Tile_Instance
     {
         switch (resourceType)
         {
-            case ResourceType.Clay: return 1;//5;
-            case ResourceType.Coal: return 1;//10;
+            case ResourceType.Clay: return 5;
+            case ResourceType.Coal: return 10;
             case ResourceType.Stone: return 20;
             case ResourceType.Iron: return 15;
             case ResourceType.Gold: return 25;

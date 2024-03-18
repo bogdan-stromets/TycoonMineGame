@@ -29,7 +29,8 @@ public enum TileState
     ReadyToMine,
     ProcessMine,
     ResourceReady,
-    Used
+    Used,
+    ResourceSpawning
 }
 public enum CharacterState
 {
@@ -112,7 +113,6 @@ public class GameController : MonoBehaviour
     void Update()
     {
         AutoCollect();
-
     }
     public void AutoCollect()
     {

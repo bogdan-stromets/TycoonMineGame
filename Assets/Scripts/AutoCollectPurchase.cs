@@ -11,6 +11,8 @@ public class AutoCollectPurchase : MonoBehaviour
     private void Start()
     {
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+        if(gameController.AutoCollectStatus)
+            GetComponentInChildren<TextMeshPro>().text = "Max \n Lvl";
     }
 
     private void OnMouseDown()

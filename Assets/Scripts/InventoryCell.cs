@@ -24,6 +24,13 @@ public class InventoryCell : MonoBehaviour
         defaultPos = transform.position;
         //item = gameObject.GetComponentInChildren<Outline>().gameObject;
     }
+    private void Start()
+    {
+        if (resourceType != ResourceType.None)
+        {
+            PutItem();
+        }
+    }
     private void OnEnable()
     {
     }

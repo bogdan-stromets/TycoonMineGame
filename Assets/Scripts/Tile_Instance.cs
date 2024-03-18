@@ -13,7 +13,7 @@ public class Tile_Instance : MonoBehaviour
     protected GameController gameController;
     private Color defaultColor;
     public int unlockPrice { get; set; }
-    void Awake()
+    protected virtual void Start()
     {
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
         if (IsTileLock())

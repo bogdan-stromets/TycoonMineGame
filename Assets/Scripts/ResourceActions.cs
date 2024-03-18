@@ -98,6 +98,7 @@ namespace Assets.Scripts
                 if (transform.position.y == transform.parent.position.y + 2)
                 {
                     spawned = true;
+                    transform.parent.gameObject.GetComponent<Tile_Instance>().tileState = TileState.ResourceReady;
                     yield break;
                 }
                 t++;
