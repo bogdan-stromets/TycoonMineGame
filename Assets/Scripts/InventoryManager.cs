@@ -137,9 +137,6 @@ public class InventoryManager : MonoBehaviour
     }
     public void TryFillCell(ResourceType rt)
     {
-        // тут закінчив
-
-        //CheckFullTruck();
         freeCells[0].IsFree = false;
         freeCells[0].Resource = rt;
         freeCells[0].PutItem();

@@ -23,6 +23,7 @@ public class JsonController : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<GameController>();
+        if (data == null) return;
         LoadData();
         controller.GetBalance = data.balance;
         controller.InventoryLevel = data.inventoryLevel;

@@ -1,1 +1,1 @@
-{"balance":20875,"inventoryLevel":5,"autoCollect":true,"tileStates":[1,1,1,1,1,2,2,0,3,0,3,1,2,2,2],"truckState":0,"cellsUnlockState":[true,true,true,true,true],"cellsFreeState":[false,true,true,true,true],"cellsResources":[1,0,0,0,0]}
+{"balance":0,"inventoryLevel":1,"autoCollect":false,"tileStates":[0,0,1,1,1,0,0,0,1,0,0,0,0,0,0],"truckState":1,"cellsUnlockState":[true,false,false,false,false],"cellsFreeState":[false,true,true,true,true],"cellsResources":[4,0,0,0,0]}

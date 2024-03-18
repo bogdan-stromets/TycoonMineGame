@@ -22,7 +22,6 @@ public class InventoryCell : MonoBehaviour
     private void Awake()
     {
         defaultPos = transform.position;
-        //item = gameObject.GetComponentInChildren<Outline>().gameObject;
     }
     private void Start()
     {

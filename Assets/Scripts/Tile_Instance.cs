@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class Tile_Instance : MonoBehaviour
 {
-    // прокачка тайла(більше ресурсів) + прокачка кирки(менший час добування) прокачка машини(швидше їде)
     public TileState tileState = TileState.Lock;
     protected GameController gameController;
     private Color defaultColor;

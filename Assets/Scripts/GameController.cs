@@ -61,13 +61,16 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private int balance = 100000;
     [SerializeField] private TextMeshPro balanceUI;
+    [SerializeField] private TextMeshPro tipsUI;
     [SerializeField] private GameObject character;
     [SerializeField] private List<GameObject> tiles;
     [SerializeField] private InventoryManager invManager;
     [SerializeField] private bool autoCollect;
     [SerializeField] private int inventorylvl = 1;
     [SerializeField] private GameObject truck;
+    [SerializeField] private Camera mainCamera;
     private GameObject tileMap;
+    private const string tipsTxt = "Tips: :)";
    
     public  int GetBalance
     {
@@ -81,6 +84,17 @@ public class GameController : MonoBehaviour
             }
         }
     }
+    public IEnumerator SetTips(string text = tipsTxt)
+    {
+        if (text == tipsTxt)
+        {
+            tipsUI.text = text;
+            yield break;
+        }
+        tipsUI.text = "Tips: " + text;
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(SetTips());
+    }
     public int MaxInventoryLvl { get => 5; }
     public GameObject GetTruck { get => truck; }
     public InventoryManager InventoryManager { get =>invManager; }
@@ -92,7 +106,6 @@ public class GameController : MonoBehaviour
     public int InventoryLevel { get => inventorylvl; set => inventorylvl = value; }
     private void Start()
     {
-        // зчитування балансу і інфу про відкриті плитки з файлу
         tileMap = GameObject.FindWithTag("TileMap");
         DrawBalance();
     }
@@ -103,6 +116,7 @@ public class GameController : MonoBehaviour
         if (!IsPurchasePossible(price))
         {
             Debug.Log("Error! Not enough money");
+            StartCoroutine(SetTips($"Not enough money: cost {price}$"));
             return false;
         }
 

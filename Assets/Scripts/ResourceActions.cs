@@ -39,7 +39,6 @@ namespace Assets.Scripts
         private void ResourceToCharacter()
         {
             taked = true;
-            // animation to character
             StartCoroutine(AnimResourceToCharacter(-1,1000));
         }
         IEnumerator AnimResourceToCharacter(int step, int duration)

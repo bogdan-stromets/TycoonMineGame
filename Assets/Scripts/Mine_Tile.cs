@@ -39,6 +39,9 @@ public class Mine_Tile : Tile_Instance
             break;
             case TileState.ResourceReady:
                 SpawnResource();
+            break;          
+            case TileState.ResourceSpawning:
+                SpawnResource();
             break;
         }
 
@@ -113,7 +116,6 @@ public class Mine_Tile : Tile_Instance
             yield return new WaitForSeconds(1f);
             miningTime++;
             progressBar.Value = Mathf.Lerp(progressBar.Value, miningTime,100);
-            //Debug.Log($"Mining Time: {miningTime}");
         }
         yield return null;        
         progressBar.HideProgressBar();
