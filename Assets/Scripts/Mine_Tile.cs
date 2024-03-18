@@ -22,6 +22,7 @@ public class Mine_Tile : Tile_Instance
     private int miningTime;
     private bool processUnlock;
 
+    public ResourceType GetResourceType { get =>resourceType;   }
     private void OnEnable()
     {
         unlockPrice = (int)price;
@@ -48,11 +49,6 @@ public class Mine_Tile : Tile_Instance
 
         pickaxeBehaviour = pickaxe.AddComponent<PickaxeBehaviour>();
     }
-    void Update()
-    {
-        print($"Tile State: {tileState}");
-    }
-    
 
     private void OnMouseDown()
     {
@@ -66,6 +62,7 @@ public class Mine_Tile : Tile_Instance
 
     public void PickupResource()
     {
+        gameController.InventoryManager.CheckFullTruck();
         if (gameController.CharacterScr.characterState == CharacterState.Move ||
             gameController.CharacterScr.characterState == CharacterState.Busy ||
             gameController.GetTruck.GetComponentInChildren<TruckController>().Getstate == TruckState.Full) return;
@@ -106,7 +103,7 @@ public class Mine_Tile : Tile_Instance
             yield return new WaitForSeconds(1f);
             miningTime++;
             progressBar.Value = Mathf.Lerp(progressBar.Value, miningTime,100);
-            Debug.Log($"Mining Time: {miningTime}");
+            //Debug.Log($"Mining Time: {miningTime}");
         }
         yield return null;        
         progressBar.HideProgressBar();

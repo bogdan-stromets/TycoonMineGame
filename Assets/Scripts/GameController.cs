@@ -4,8 +4,9 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-enum ResourceType
+public enum ResourceType
 {
+    None,
     Coal,
     Stone,
     Iron,
@@ -50,6 +51,11 @@ public enum InventoryState
     Closing,
     Opening
 }
+public enum CellState
+{
+    Full,
+    Empty
+}
 public class GameController : MonoBehaviour
 {
     [SerializeField] private int balance = 100000;
@@ -65,7 +71,7 @@ public class GameController : MonoBehaviour
     public  int GetBalance
     {
         get { return balance; }
-        private set 
+        set 
         {
             if(value > 0) 
             {

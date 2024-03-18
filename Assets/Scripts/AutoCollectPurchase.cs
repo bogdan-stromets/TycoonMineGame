@@ -20,7 +20,7 @@ public class AutoCollectPurchase : MonoBehaviour
         if (gameController.TryPurchase(price)) 
         {
             gameController.AutoCollectStatus = true;
-            GetComponentInChildren<TextMeshPro>().text = "Done";
+            GetComponentInChildren<TextMeshPro>().text = "Max \n Lvl";
         }
     }
 }

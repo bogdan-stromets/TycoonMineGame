@@ -17,13 +17,16 @@ public class InventoryLvLUp : MonoBehaviour
 
         if (gameController.TryPurchase(price * gameController.InventoryLevel))
         {
-            if(gameController.InventoryManager.state == InventoryState.Open)
-                gameController.InventoryManager.OnMouseDown();
+            if (gameController.InventoryManager.state == InventoryState.Open)
+                gameController.InventoryManager.ProcessClosing(); ;
             gameController.InventoryLevel++;
             if(gameController.InventoryLevel == gameController.MaxInventoryLvl)
-                GetComponentInChildren<TextMeshPro>().text = $"MaxLvl";
+                GetComponentInChildren<TextMeshPro>().text = $"Max \n Lvl";
             else
                 GetComponentInChildren<TextMeshPro>().text = $"↑v↑ {gameController.InventoryLevel}";
+            gameController.GetTruck.GetComponentInChildren<TruckController>().Getstate = TruckState.Empty;
+            gameController.InventoryManager.UnActiveCells();
+
         }
     }
 }

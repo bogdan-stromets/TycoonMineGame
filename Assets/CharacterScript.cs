@@ -6,6 +6,7 @@ public class CharacterScript : MonoBehaviour
 {
     public Tile_Instance target_tile { get; set; }
     public CharacterState characterState = CharacterState.Idle;
+    public ResourceType currentResource;
     private Animator animator;
     public GameController gameController { get; private set; }
     private void Awake()

@@ -2333,6 +2333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterState: 0
+  currentResource: 0
 --- !u!1001 &115201364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6946,7 +6947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileState: 0
-  resourceType: 0
+  resourceType: 1
   pickaxe_prefab: {fileID: 5676840300738598790, guid: 2ce7f3f60a7219d478bdc624979d8024, type: 3}
   resource_prefab: {fileID: 1068553519891591867, guid: 4bb5291a21fb70a42ba663daf3777d33, type: 3}
   price: 500
@@ -12935,6 +12936,13 @@ MonoBehaviour:
   - {fileID: 996325085}
   - {fileID: 1048909181}
   - {fileID: 1847229797}
+  materials:
+  - {fileID: 2100000, guid: adffe15a4adadbb41ab8364a2a3592ce, type: 2}
+  - {fileID: 2100000, guid: bc5447bb7f8be614c97df07573048322, type: 2}
+  - {fileID: 2100000, guid: 5a5a8957102fe43429e181789159e6a3, type: 2}
+  - {fileID: 2100000, guid: 55795c7b2ab3dfc489aad90ba2d69840, type: 2}
+  - {fileID: 2100000, guid: a8a730a974d91fa438e70ef13c40338d, type: 2}
+  - {fileID: 2100000, guid: a50bdf20e25beb04a9c20b85f0a4fb6d, type: 2}
   gameController: {fileID: 1675182187}
   state: 1
 --- !u!1001 &763269662
@@ -15712,7 +15720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileState: 0
-  resourceType: 1
+  resourceType: 2
   pickaxe_prefab: {fileID: 5676840300738598790, guid: 2ce7f3f60a7219d478bdc624979d8024, type: 3}
   resource_prefab: {fileID: 3761745242275073796, guid: 305a388b6539d3041a283b76508de030, type: 3}
   price: 1500
@@ -21067,7 +21075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileState: 1
-  resourceType: 3
+  resourceType: 4
   pickaxe_prefab: {fileID: 5676840300738598790, guid: 2ce7f3f60a7219d478bdc624979d8024, type: 3}
   resource_prefab: {fileID: 3761745242275073796, guid: 18b3b3ce8cb62a64db775c440b298c54, type: 3}
   price: 0
@@ -23327,7 +23335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileState: 0
-  resourceType: 5
+  resourceType: 6
   pickaxe_prefab: {fileID: 5676840300738598790, guid: 2ce7f3f60a7219d478bdc624979d8024, type: 3}
   resource_prefab: {fileID: 439726086457075563, guid: 9de82d5e406d9d544ac387c521e08a2f, type: 3}
   price: 5000
@@ -25538,7 +25546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileState: 0
-  resourceType: 0
+  resourceType: 1
   pickaxe_prefab: {fileID: 5676840300738598790, guid: 2ce7f3f60a7219d478bdc624979d8024, type: 3}
   resource_prefab: {fileID: 1068553519891591867, guid: 4bb5291a21fb70a42ba663daf3777d33, type: 3}
   price: 500
@@ -25736,7 +25744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3604336852332673749, guid: 11a56a17f8e1fc94e86caf62d8c784da, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 24.6081
+      value: 21.8888
       objectReference: {fileID: 0}
     - target: {fileID: 3604336852332673749, guid: 11a56a17f8e1fc94e86caf62d8c784da, type: 3}
       propertyPath: m_SizeDelta.y
@@ -25744,7 +25752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3604336852332673749, guid: 11a56a17f8e1fc94e86caf62d8c784da, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0005
+      value: 0.0043
       objectReference: {fileID: 0}
     - target: {fileID: 3604336852332673749, guid: 11a56a17f8e1fc94e86caf62d8c784da, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -27852,7 +27860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileState: 0
-  resourceType: 2
+  resourceType: 3
   pickaxe_prefab: {fileID: 5676840300738598790, guid: 2ce7f3f60a7219d478bdc624979d8024, type: 3}
   resource_prefab: {fileID: 5662333279100532861, guid: d9449dcf4f9e2a64e84d9337dcb438eb, type: 3}
   price: 1000
@@ -28956,7 +28964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35150c0cfc2d4c745bded0a62aad96c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balance: 47759
+  balance: 0
   balanceUI: {fileID: 461465470}
   character: {fileID: 112366653}
   tiles:
@@ -28978,6 +28986,7 @@ MonoBehaviour:
   invManager: {fileID: 761208219}
   autoCollect: 0
   inventorylvl: 1
+  truck: {fileID: 2122781773}
 --- !u!4 &1675182188
 Transform:
   m_ObjectHideFlags: 0
@@ -29171,7 +29180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileState: 0
-  resourceType: 4
+  resourceType: 5
   pickaxe_prefab: {fileID: 5676840300738598790, guid: 2ce7f3f60a7219d478bdc624979d8024, type: 3}
   resource_prefab: {fileID: 8307322894754887973, guid: 53168ceb81c92934d9d8edab7fef6d9e, type: 3}
   price: 2000
@@ -31337,7 +31346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileState: 0
-  resourceType: 2
+  resourceType: 3
   pickaxe_prefab: {fileID: 5676840300738598790, guid: 2ce7f3f60a7219d478bdc624979d8024, type: 3}
   resource_prefab: {fileID: 5662333279100532861, guid: d9449dcf4f9e2a64e84d9337dcb438eb, type: 3}
   price: 1000
@@ -36096,7 +36105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileState: 0
-  resourceType: 5
+  resourceType: 6
   pickaxe_prefab: {fileID: 5676840300738598790, guid: 2ce7f3f60a7219d478bdc624979d8024, type: 3}
   resource_prefab: {fileID: 439726086457075563, guid: 9de82d5e406d9d544ac387c521e08a2f, type: 3}
   price: 5000
@@ -36690,6 +36699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1323102595}
   speed: 4
+  state: 3
 --- !u!1001 &2124591883
 PrefabInstance:
   m_ObjectHideFlags: 0

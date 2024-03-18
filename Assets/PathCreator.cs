@@ -24,6 +24,10 @@ public class PathCreator : MonoBehaviour
     public Transform[] PathElements { get { return pathElements; }}
 
     public int MovingTo { get => movingTo; set => movingTo = value; }
+    private void Start()
+    {
+        gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+    }
 
     public void OnDrawGizmos()
     {
@@ -46,8 +50,15 @@ public class PathCreator : MonoBehaviour
     {
         CharacterScript scr = character.GetComponent<CharacterScript>();
         scr.characterState = pathReversed ?  CharacterState.Busy : CharacterState.Idle;
-        if (scr.characterState == CharacterState.Idle)
+        if (scr.characterState == CharacterState.Idle) 
+        {
             scr.SetIdle();
+            gameController.InventoryManager.TryFillCell(scr.currentResource);
+        }
+        else 
+        {
+            scr.currentResource = transform.parent.gameObject.GetComponent<Mine_Tile>().GetResourceType;
+        }
         Destroy(character.GetComponent<FollowPath>());
     }
     public IEnumerator<Transform> GetNextPathPoint()

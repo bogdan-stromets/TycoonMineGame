@@ -9,16 +9,28 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private List<InventoryCell> inventoryCells = new List<InventoryCell>();
+    [SerializeField] private Material[] materials;
     private List<InventoryCell> activeCells;
+    private List<InventoryCell> freeCells = new List<InventoryCell>();
     public GameController gameController;
     public InventoryState state = InventoryState.Close;
     private float speed = 3f;
 
+    public List<InventoryCell> GetActiveCells { get => activeCells; }
+    public Material GetMaterial(ResourceType rt)
+    {
+        if (materials == null)
+        {
+            Debug.Log("Error! Materials not found");
+            return null;
+        }
+        return materials[(int)rt - 1];
+    }
     private void Start()
     {
         UnActiveCells();
     }
-    private void UnActiveCells()
+    public void UnActiveCells()
     {
         foreach (InventoryCell cell in inventoryCells) { cell.Unlocked = true; }
         for (int i = gameController.InventoryLevel; i < inventoryCells.Count; i++) 
@@ -29,19 +41,20 @@ public class InventoryManager : MonoBehaviour
 
         activeCells = inventoryCells.Where(x => x.Unlocked).ToList();
     }
-    public void OnMouseDown()
+    private void OnMouseDown()
     {
         switch (state) 
         {
             case InventoryState.Close:
-                StartCoroutine(Opening());
+                ProcessOpening();
             break;
             case InventoryState.Open:
-                StartCoroutine(Closing());
+                ProcessClosing();
             break;
         }
     }
-
+    public void ProcessClosing() => StartCoroutine(Closing());
+    public void ProcessOpening() => StartCoroutine(Opening());
     private IEnumerator Closing()
     {
         UnActiveCells();
@@ -107,4 +120,35 @@ public class InventoryManager : MonoBehaviour
 
     }
 
+    private void GetFreeCell()
+    {
+        freeCells = activeCells.Where(x => x.IsFree).ToList();
+    }
+    private bool HasFreeCell() => freeCells.Count != 0;
+    public void CheckFullTruck()
+    {
+        GetFreeCell();
+        if (!HasFreeCell() && gameController.GetTruck.GetComponent<TruckController>().Getstate != TruckState.Full)
+        {
+            gameController.GetTruck.GetComponent<TruckController>().Getstate = TruckState.Full;
+            return;
+        }
+    }
+    public void TryFillCell(ResourceType rt)
+    {
+        // тут закінчив
+
+        //CheckFullTruck();
+        freeCells[0].IsFree = false;
+        freeCells[0].Resource = rt;
+        freeCells[0].PutItem();
+        freeCells.RemoveAt(0);
+    }
+
+    public void ResetCells()
+    {
+        for (int i = 0; i < inventoryCells.Count; i++)
+            inventoryCells[i].ResetSelf();
+
+    }
 }

@@ -95,7 +95,7 @@ namespace Assets.Scripts
                 t++;
                 Ease ease = new Ease(t, pickaxeMaterial.color.a, targetValue, step, duration, EaseType.CirculIn);
                 pickaxeMaterial.color = new Color(pickaxeMaterial.color.r, pickaxeMaterial.color.g, pickaxeMaterial.color.b,(float)ease.GetValue);
-                print($"Alpha pickaxe: {pickaxeMaterial.color.a}");
+               // print($"Alpha pickaxe: {pickaxeMaterial.color.a}");
                 yield return null;
             }
         }
